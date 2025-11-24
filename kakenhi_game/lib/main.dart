@@ -34,16 +34,7 @@ class Player {
   String get fullTitle {
     // 選んだカードをつなげてタイトルにする
     if (selectedCards.isEmpty) return "（未作成）";
-    String title = "";
-    for (var card in selectedCards) {
-      // 単純に上・中・下をつなげる（実際の遊び方に合わせて調整可能）
-      // プレイヤーはカードの「上・中・下」のどれを使うか選ぶのが本来のルールですが
-      // 簡易化のため、今回は「カードごとの3つの言葉」をすべて表示しつつ
-      // 脳内で補完する形式、あるいはUIで選べるようにしますが、
-      // MVPでは「カードを並べる」ことに注力します。
-      // ※ここではシンプルに、カード内の文字列を全て連結せず、カードオブジェクトとして保持します
-    }
-    return title; 
+    return selectedCards.map((card) => "${card.top}${card.middle}${card.bottom}").join("");
   }
 }
 
